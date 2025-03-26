@@ -53,4 +53,7 @@ disable = ["C0111", "C0103", "C0330", "C0326"]
 [tool.pylint.format]
 max-line-length = "88"
 
+[tool.pytest.ini_options]
+addopts = "--cov=src --cov-report=xml --cov-report=term-missing -v"
+testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
