@@ -1,0 +1,51 @@
+[2025-03-22T20:34:20.589Z] - ValidationError (400)
+Endpoint: /api/test
+Operation: POST
+Payload: {
+  "body": {
+    "test": "data"
+  },
+  "query": {
+    "filter": "test"
+  },
+  "params": {
+    "id": "123"
+  }
+}
+Error Message: Invalid input
+Stack Trace: No stack trace available
+-----------------------------------------
+[2025-03-22T20:34:20.590Z] - AuthError (401)
+Endpoint: /api/test
+Operation: POST
+Payload: {
+  "body": {
+    "test": "data"
+  },
+  "query": {
+    "filter": "test"
+  },
+  "params": {
+    "id": "123"
+  }
+}
+Error Message: Unauthorized
+Stack Trace: No stack trace available
+-----------------------------------------
+[2025-03-22T20:34:20.590Z] - ServerError (500)
+Endpoint: /api/test
+Operation: POST
+Payload: {
+  "body": {
+    "test": "data"
+  },
+  "query": {
+    "filter": "test"
+  },
+  "params": {
+    "id": "123"
+  }
+}
+Error Message: Internal error
+Stack Trace: No stack trace available
+-----------------------------------------

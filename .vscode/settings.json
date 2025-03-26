@@ -1,0 +1,8 @@
+{
+    "python.analysis.typeEvaluation.enableExperimentalFeatures": false,
+    "python.analysis.typeCheckingMode": "standard",
+    "python.analysis.languageServerMode": "full",
+    "python.analysis.aiCodeActions": {
+        
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "1. Install Git",
+            "type": "shell",
+            "command": "echo 'Please install Git from https://git-scm.com/downloads and make sure it is added to your PATH'"
+        },
+        {
+            "label": "2. Clone RooFlow",
+            "type": "shell",
+            "command": "git",
+            "args": [
+                "clone",
+                "https://github.com/GreatScottyMac/RooFlow.git",
+                "RooFlow-temp"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": ["1. Install Git"]
+        },
+        {
+            "label": "3. Create .roo Directory",
+            "type": "shell",
+            "command": "mkdir -p .roo",
+            "dependsOn": ["2. Clone RooFlow"]
+        },
+        {
+            "label": "4. Copy System Prompts",
+            "type": "shell",
+            "command": "cp RooFlow-temp/config/.roo/system-prompt-* .roo/ && cp RooFlow-temp/config/.roo* . && cp RooFlow-temp/config/insert-variables.* .",
+            "dependsOn": ["3. Create .roo Directory"]
+        },
+        {
+            "label": "5. Run Insert Variables Script",
+            "type": "shell",
+            "command": "chmod +x insert-variables.sh && ./insert-variables.sh",
+            "windows": {
+                "command": "insert-variables.cmd"
+            },
+            "dependsOn": ["4. Copy System Prompts"]
+        },
+        {
+            "label": "6. Cleanup",
+            "type": "shell",
+            "command": "rm -rf RooFlow-temp",
+            "windows": {
+                "command": "rmdir /s /q RooFlow-temp"
+            },
+            "dependsOn": ["5. Run Insert Variables Script"]
+        },
+        {
+            "label": "Setup RooFlow (Complete)",
+            "dependsOn": [
+                "1. Install Git",
+                "2. Clone RooFlow",
+                "3. Create .roo Directory",
+                "4. Copy System Prompts",
+                "5. Run Insert Variables Script",
+                "6. Cleanup"
+            ],
+            "dependsOrder": "sequence",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
