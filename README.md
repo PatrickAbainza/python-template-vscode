@@ -23,7 +23,25 @@ A modern Python project template with Poetry for dependency management, UV for f
   - Code coverage support
   - VS Code test integration
 
-## Getting Started
+## Quickstart: Creating a New Project
+
+### Using VS Code Tasks (Recommended)
+
+1. Open Command Palette (Cmd/Ctrl+Shift+P)
+2. Select "Tasks: Run Task"
+3. Choose "Setup New Python Project"
+4. Enter your project name and path
+5. Wait for automatic setup to complete
+
+The task will:
+
+- Clone this template
+- Set up a new git repository
+- Create a virtual environment with UV
+- Install all dependencies
+- Configure VS Code settings
+
+### Manual Setup
 
 1. Create a new repository using this template
 2. Clone your new repository
@@ -54,6 +72,7 @@ A modern Python project template with Poetry for dependency management, UV for f
 ├── src/                  # Source code
 ├── tests/               # Test files
 ├── docs/               # Documentation
+├── scripts/            # Setup automation
 ├── .vscode/            # VS Code settings
 ├── pyproject.toml      # Project configuration
 └── .pre-commit-config.yaml
