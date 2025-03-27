@@ -1,11 +1,11 @@
 # Python Project Template
 
-A modern Python project template with Poetry for dependency management, UV for package installation, and VS Code integration.
+A modern Python project template with Poetry and UV for efficient Python package management.
 
 ## Features
 
-- Poetry for dependency declaration
-- UV for fast package installation and virtual environments
+- Poetry for dependency management
+- UV for fast package installation
 - Pre-commit hooks for code quality
 - VS Code configuration
 - Testing infrastructure
@@ -24,14 +24,13 @@ A modern Python project template with Poetry for dependency management, UV for p
    ```bash
    curl -sSL https://install.python-poetry.org | python3 -
    ```
-5. Create a virtual environment and install dependencies using UV:
+5. Set up your development environment:
    ```bash
    uv venv
-   uv pip install -e .
+   uv pip install -e ".[dev]"
    ```
-6. Activate pre-commit hooks:
+6. Install pre-commit hooks:
    ```bash
-   uv pip install pre-commit
    pre-commit install
    ```
 
@@ -45,18 +44,7 @@ This template includes:
 - Testing with pytest
 - VS Code integration
 
-### Package Management Strategy
-
-This template uses a hybrid approach for package management:
-
-- **Poetry** for dependency declaration and resolution (pyproject.toml)
-- **UV** for fast package installation and virtual environment management
-
-This combination provides:
-
-- Poetry's robust dependency resolution and project management
-- UV's superior installation speed (up to 10-100x faster than pip)
-- Efficient virtual environment handling
+For more details about our package management strategy, see [docs/package-management.md](docs/package-management.md).
 
 ## Project Structure
 
@@ -64,7 +52,8 @@ This combination provides:
 .
 ├── src/                  # Source code
 ├── tests/               # Test files
+├── docs/               # Documentation
 ├── .vscode/            # VS Code settings
-├── pyproject.toml      # Poetry and tool configurations
+├── pyproject.toml      # Project configuration
 └── .pre-commit-config.yaml
 ```
