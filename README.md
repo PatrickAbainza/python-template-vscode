@@ -1,10 +1,11 @@
 # Python Project Template
 
-A modern Python project template with Poetry dependency management and VS Code integration.
+A modern Python project template with Poetry for dependency management, UV for package installation, and VS Code integration.
 
 ## Features
 
-- Poetry for dependency management
+- Poetry for dependency declaration
+- UV for fast package installation and virtual environments
 - Pre-commit hooks for code quality
 - VS Code configuration
 - Testing infrastructure
@@ -15,17 +16,23 @@ A modern Python project template with Poetry dependency management and VS Code i
 
 1. Create a new repository using this template
 2. Clone your new repository
-3. Install Poetry if you haven't already:
+3. Install UV if you haven't already:
+   ```bash
+   curl -sSL https://github.com/astral-sh/uv/releases/download/0.6.5/uv-installer.sh | sh
+   ```
+4. Install Poetry if you haven't already:
    ```bash
    curl -sSL https://install.python-poetry.org | python3 -
    ```
-4. Install dependencies:
+5. Create a virtual environment and install dependencies using UV:
    ```bash
-   poetry install
+   uv venv
+   uv pip install -e .
    ```
-5. Activate pre-commit hooks:
+6. Activate pre-commit hooks:
    ```bash
-   poetry run pre-commit install
+   uv pip install pre-commit
+   pre-commit install
    ```
 
 ## Development
@@ -37,6 +44,19 @@ This template includes:
 - Linting with flake8
 - Testing with pytest
 - VS Code integration
+
+### Package Management Strategy
+
+This template uses a hybrid approach for package management:
+
+- **Poetry** for dependency declaration and resolution (pyproject.toml)
+- **UV** for fast package installation and virtual environment management
+
+This combination provides:
+
+- Poetry's robust dependency resolution and project management
+- UV's superior installation speed (up to 10-100x faster than pip)
+- Efficient virtual environment handling
 
 ## Project Structure
 
