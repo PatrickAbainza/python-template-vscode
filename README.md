@@ -1,50 +1,51 @@
 # Python Project Template
 
-A modern Python project template with Poetry and UV for efficient Python package management.
+A modern Python project template with Poetry for dependency management, UV for fast installations (10-100x faster), and VS Code integration.
 
-## Features
+## Key Features
 
-- Poetry for dependency management
-- UV for fast package installation
-- Pre-commit hooks for code quality
-- VS Code configuration
-- Testing infrastructure
-- Type checking support
-- GitHub Actions CI/CD (coming soon)
+- **Fast Package Management**
+
+  - Poetry for dependency management
+  - UV for rapid installations
+  - Efficient virtual environments
+
+- **Development Tools**
+
+  - VS Code integration
+  - Pre-commit hooks
+  - Type checking (mypy)
+  - Code formatting (black)
+  - Linting (ruff)
+
+- **Testing Infrastructure**
+  - Pytest configuration
+  - Code coverage support
+  - VS Code test integration
 
 ## Getting Started
 
 1. Create a new repository using this template
 2. Clone your new repository
-3. Install UV if you haven't already:
+3. Install UV:
    ```bash
    curl -sSL https://github.com/astral-sh/uv/releases/download/0.6.5/uv-installer.sh | sh
    ```
-4. Install Poetry if you haven't already:
-   ```bash
-   curl -sSL https://install.python-poetry.org | python3 -
-   ```
-5. Set up your development environment:
+4. Set up your environment:
    ```bash
    uv venv
    uv pip install -e ".[dev]"
    ```
-6. Install pre-commit hooks:
-   ```bash
-   pre-commit install
-   ```
+5. Start developing! VS Code is pre-configured for:
+   - Python development
+   - Code formatting
+   - Type checking
+   - Testing
 
-## Development
+## Documentation
 
-This template includes:
-
-- Code formatting with Black
-- Type checking with mypy
-- Linting with flake8
-- Testing with pytest
-- VS Code integration
-
-For more details about our package management strategy, see [docs/package-management.md](docs/package-management.md).
+- [Package Management Strategy](docs/package-management.md)
+- [Project Capabilities](docs/capabilities.md)
 
 ## Project Structure
 
