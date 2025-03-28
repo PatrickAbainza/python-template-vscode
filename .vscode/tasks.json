@@ -77,6 +77,22 @@
             "dependsOn": ["7. Run Insert Variables Script"]
         },
         {
+            "label": "9. Project Cleanup",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": [
+                "-c",
+                "import shutil, os, glob; [os.remove(f) if os.path.exists(f) else None for f in ['insert-variables.cmd', 'insert-variables.sh', 'pyproject.toml.bak', '.coverage', 'coverage.xml', '.DS_Store']]; [shutil.rmtree(d) if os.path.exists(d) else None for d in ['htmlcov', 'scripts', '__pycache__', '.pytest_cache', 'build', 'dist', '.tox', '.eggs', '*.egg-info']]; [shutil.rmtree(d) for d in glob.glob('**/__pycache__', recursive=True) if os.path.exists(d)]; [os.remove(f) for f in glob.glob('**/*.py[cod]', recursive=True) if os.path.exists(f)]"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "dependsOn": ["8. Cleanup"],
+            "detail": "Removes all temporary files, caches, and build artifacts after project installation"
+        },
+        {
             "label": "Setup Complete Project",
             "dependsOn": [
                 "1. Setup Python Environment",
@@ -88,7 +104,8 @@
                 "6b. Copy Config Files",
                 "6c. Copy Scripts",
                 "7. Run Insert Variables Script",
-                "8. Cleanup"
+                "8. Cleanup",
+                "9. Project Cleanup"
             ],
             "dependsOrder": "sequence",
             "presentation": {
