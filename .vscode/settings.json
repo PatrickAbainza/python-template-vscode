@@ -13,6 +13,15 @@
         }
     ],
 
+    // Package management (UV and Poetry)
+    "python.poetryPath": "poetry",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.packages.exclusions": [
+        ".venv",
+        ".uv"
+    ],
+
     // Advanced type checking
     "python.analysis.diagnosticSeverityOverrides": {
         "reportUnknownMemberType": "warning",
@@ -70,7 +79,8 @@
     "python.autoComplete.addBrackets": true,
     "python.analysis.ignore": [
         "**/site-packages/**",
-        ".venv/**"
+        ".venv/**",
+        ".uv/**"
     ],
 
     // Extensions settings
@@ -87,6 +97,7 @@
         "htmlcov": true,
         ".mypy_cache": true,
         ".ruff_cache": true,
+        ".uv": true,
         "**/.DS_Store": true
     },
 
@@ -95,11 +106,15 @@
         "**/.git": true,
         "**/.venv": true,
         "**/node_modules": true,
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "**/.uv": true,
+        "**/poetry.lock": true
     },
 
     // Terminal integration
     "terminal.integrated.env.osx": {
-        "PYTHONPATH": "${workspaceFolder}"
+        "PYTHONPATH": "${workspaceFolder}",
+        "VIRTUAL_ENV": "${workspaceFolder}/.venv",
+        "PATH": "${workspaceFolder}/.venv/bin:${env:PATH}"
     }
 }
