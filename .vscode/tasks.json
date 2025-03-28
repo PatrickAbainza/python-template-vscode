@@ -12,22 +12,12 @@
             }
         },
         {
-            "label": "2. Setup Roo Code",
-            "type": "shell",
-            "command": "bash",
-            "args": ["scripts/setup-roo.sh"],
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            }
-        },
-        {
-            "label": "3. Install Git",
+            "label": "2. Install Git",
             "type": "shell",
             "command": "echo 'Please install Git from https://git-scm.com/downloads and make sure it is added to your PATH'"
         },
         {
-            "label": "4. Clone RooFlow",
+            "label": "3. Clone RooFlow",
             "type": "shell",
             "command": "git",
             "args": [
@@ -38,43 +28,53 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "dependsOn": ["3. Install Git"]
+            "dependsOn": ["2. Install Git"]
         },
         {
-            "label": "5. Create .roo Directory",
+            "label": "4. Create .roo Directory",
             "type": "shell",
             "command": "mkdir -p .roo",
-            "dependsOn": ["4. Clone RooFlow"]
+            "dependsOn": ["3. Clone RooFlow"]
         },
         {
-            "label": "6a. Copy System Prompts",
+            "label": "5a. Copy System Prompts",
             "type": "shell",
             "command": "cp RooFlow-temp/config/.roo/system-prompt-* .roo/",
-            "dependsOn": ["5. Create .roo Directory"]
+            "dependsOn": ["4. Create .roo Directory"]
         },
         {
-            "label": "6b. Copy Config Files",
+            "label": "5b. Copy Config Files",
             "type": "shell",
             "command": "cp RooFlow-temp/config/.rooignore RooFlow-temp/config/.roomodes .",
-            "dependsOn": ["6a. Copy System Prompts"]
+            "dependsOn": ["5a. Copy System Prompts"]
         },
         {
-            "label": "6c. Copy Scripts",
+            "label": "5c. Copy Scripts",
             "type": "shell",
-            "command": "cp RooFlow-temp/config/insert-variables.* .",
-            "dependsOn": ["6b. Copy Config Files"]
+            "command": "cp -r RooFlow-temp/config/scripts .; cp RooFlow-temp/config/insert-variables.* .",
+            "dependsOn": ["5b. Copy Config Files"]
         },
         {
-            "label": "7. Run Insert Variables Script",
+            "label": "6. Run Insert Variables Script",
             "type": "shell",
             "command": "chmod +x insert-variables.sh && ./insert-variables.sh",
-            "dependsOn": ["6c. Copy Scripts"]
+            "dependsOn": ["5c. Copy Scripts"]
         },
         {
-            "label": "8. Cleanup",
+            "label": "7. Setup Roo Code",
+            "type": "shell",
+            "command": "chmod +x scripts/setup-roo.sh && ./scripts/setup-roo.sh",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "dependsOn": ["6. Run Insert Variables Script"]
+        },
+        {
+            "label": "8. Cleanup RooFlow",
             "type": "shell",
             "command": "rm -rf RooFlow-temp",
-            "dependsOn": ["7. Run Insert Variables Script"]
+            "dependsOn": ["7. Setup Roo Code"]
         },
         {
             "label": "9. Project Cleanup",
@@ -89,22 +89,22 @@
                 "reveal": "always",
                 "panel": "shared"
             },
-            "dependsOn": ["8. Cleanup"],
+            "dependsOn": ["8. Cleanup RooFlow"],
             "detail": "Removes temporary files and build artifacts after project installation"
         },
         {
             "label": "Setup Complete Project",
             "dependsOn": [
                 "1. Setup Python Environment",
-                "2. Setup Roo Code",
-                "3. Install Git",
-                "4. Clone RooFlow",
-                "5. Create .roo Directory",
-                "6a. Copy System Prompts",
-                "6b. Copy Config Files",
-                "6c. Copy Scripts",
-                "7. Run Insert Variables Script",
-                "8. Cleanup",
+                "2. Install Git",
+                "3. Clone RooFlow",
+                "4. Create .roo Directory",
+                "5a. Copy System Prompts",
+                "5b. Copy Config Files",
+                "5c. Copy Scripts",
+                "6. Run Insert Variables Script",
+                "7. Setup Roo Code",
+                "8. Cleanup RooFlow",
                 "9. Project Cleanup"
             ],
             "dependsOrder": "sequence",
