@@ -24,22 +24,46 @@
             "label": "3. Create .roo Directory",
             "type": "shell",
             "command": "mkdir -p .roo",
+            "windows": {
+                "command": "if not exist .roo mkdir .roo"
+            },
             "dependsOn": ["2. Clone RooFlow"]
         },
         {
-            "label": "4. Copy System Prompts",
+            "label": "4a. Copy System Prompts",
             "type": "shell",
-            "command": "cp RooFlow-temp/config/.roo/system-prompt-* .roo/ && cp RooFlow-temp/config/.roo* . && cp RooFlow-temp/config/insert-variables.* .",
+            "command": "cp RooFlow-temp/config/.roo/system-prompt-* .roo/",
+            "windows": {
+                "command": "copy RooFlow-temp\\config\\.roo\\system-prompt-* .roo\\"
+            },
             "dependsOn": ["3. Create .roo Directory"]
+        },
+        {
+            "label": "4b. Copy Config Files",
+            "type": "shell",
+            "command": "cp RooFlow-temp/config/.rooignore RooFlow-temp/config/.roomodes .",
+            "windows": {
+                "command": "copy RooFlow-temp\\config\\.rooignore . && copy RooFlow-temp\\config\\.roomodes ."
+            },
+            "dependsOn": ["4a. Copy System Prompts"]
+        },
+        {
+            "label": "4c. Copy Scripts",
+            "type": "shell",
+            "command": "cp RooFlow-temp/config/insert-variables.* .",
+            "windows": {
+                "command": "copy RooFlow-temp\\config\\insert-variables.* ."
+            },
+            "dependsOn": ["4b. Copy Config Files"]
         },
         {
             "label": "5. Run Insert Variables Script",
             "type": "shell",
             "command": "chmod +x insert-variables.sh && ./insert-variables.sh",
             "windows": {
-                "command": "insert-variables.cmd"
+                "command": ".\\insert-variables.cmd"
             },
-            "dependsOn": ["4. Copy System Prompts"]
+            "dependsOn": ["4c. Copy Scripts"]
         },
         {
             "label": "6. Cleanup",
@@ -56,7 +80,9 @@
                 "1. Install Git",
                 "2. Clone RooFlow",
                 "3. Create .roo Directory",
-                "4. Copy System Prompts",
+                "4a. Copy System Prompts",
+                "4b. Copy Config Files",
+                "4c. Copy Scripts",
                 "5. Run Insert Variables Script",
                 "6. Cleanup"
             ],
