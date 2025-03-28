@@ -82,7 +82,7 @@
             "command": "${command:python.interpreterPath}",
             "args": [
                 "-c",
-                "import shutil, os, glob; [os.remove(f) if os.path.exists(f) else None for f in ['insert-variables.cmd', 'insert-variables.sh', 'pyproject.toml.bak', '.coverage', 'coverage.xml', '.DS_Store']]; [shutil.rmtree(d) if os.path.exists(d) else None for d in ['htmlcov', 'scripts', '__pycache__', '.pytest_cache', 'build', 'dist', '.tox', '.eggs', '*.egg-info']]; [shutil.rmtree(d) for d in glob.glob('**/__pycache__', recursive=True) if os.path.exists(d)]; [os.remove(f) for f in glob.glob('**/*.py[cod]', recursive=True) if os.path.exists(f)]"
+                "import shutil, os, glob; [os.remove(f) if os.path.exists(f) else None for f in ['insert-variables.cmd', 'insert-variables.sh', 'pyproject.toml.bak', '.coverage', 'coverage.xml', '.DS_Store']]; [shutil.rmtree(d) if os.path.exists(d) else None for d in ['htmlcov', '.pytest_cache', 'build', 'dist', '.tox', '.eggs', '*.egg-info']]; [shutil.rmtree(d) for d in glob.glob('**/__pycache__', recursive=True) if os.path.exists(d)]; [os.remove(f) for f in glob.glob('**/*.py[cod]', recursive=True) if os.path.exists(f)]"
             ],
             "problemMatcher": [],
             "presentation": {
@@ -90,7 +90,7 @@
                 "panel": "shared"
             },
             "dependsOn": ["8. Cleanup"],
-            "detail": "Removes all temporary files, caches, and build artifacts after project installation"
+            "detail": "Removes temporary files and build artifacts after project installation"
         },
         {
             "label": "Setup Complete Project",
